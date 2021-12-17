@@ -15,4 +15,36 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+    
+});
+
+Route::group(['namespace' => 'App\Http\Controllers'], function()
+{   
+    /**
+     * Home Routes
+     */
+    Route::get('/', 'HomeController@index')->name('home.index');
+
+    Route::group(['middleware' => ['guest']], function() {
+        /**
+         * Register Routes
+         */
+        Route::get('/register', 'RegistrationController@show')->name('register.show');
+        Route::post('/register', 'RegistrationController@store')->name('register.store');
+
+        /**
+         * Login Routes
+         */
+        Route::get('/login', 'Auth\LoginController@show')->name('login');
+        Route::post('/login', 'Auth\LoginController@login')->name('login.perform');
+
+    });
+
+    Route::group(['middleware' => ['auth']], function() {
+        /**
+         * Logout Routes
+         */
+        Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
+        Route::resource('posts', PostController::class);
+    });
 });
