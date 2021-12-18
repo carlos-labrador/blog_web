@@ -38,3 +38,26 @@ main > .container {
   .dropdown-toggle {
     outline: 0;
   }
+
+
+  //Card
+  a.card-footer:hover {
+    background-color: rgba(240, 240, 240, 0.15);
+    cursor: pointer;
+  }
+  
+  a.card-footer:active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .card,
+  .card-header,
+  .card-body {
+    border-radius: 0 !important;
+  }
+  
+  .card-header {
+    color: $primary;
+    background-color: #343a40;
+    background-color: $gray-800;
+  }

@@ -46,5 +46,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          */
         Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
         Route::resource('posts', PostController::class);
+        Route::resource('users', UserController::class);
     });
 });
