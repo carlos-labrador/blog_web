@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
         $admin = new User(
             [
                 'username' => 'admin',
-                'email' => 'admin@blog.com', 
-                'password' =>  bcrypt('supersecret'),
+                'email' => 'admin@blog.com',
+                'password' => bcrypt('supersecret'),
             ]
         );
         $admin->save();

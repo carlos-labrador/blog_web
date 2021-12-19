@@ -71,4 +71,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function hasRole($roles)
+    {   
+        foreach ($roles as $role) {
+            logger($role);
+            if ($this->roles->contains('name', $role)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

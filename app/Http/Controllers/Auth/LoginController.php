@@ -17,6 +17,7 @@ class LoginController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->credentials();
+        logger($credentials);
         if (!Auth::attempt($credentials)) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
