@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserType;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -72,14 +73,18 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function hasRole($roles)
-    {   
+    public function hasRole($roles, $attribute = 'name')
+    {
         foreach ($roles as $role) {
-            logger($role);
-            if ($this->roles->contains('name', $role)) {
+            if ($this->roles->contains($attribute, $role)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public function isAdministrator()
+    {
+        return $this->hasRole([UserType::Administrator], 'id');
     }
 }

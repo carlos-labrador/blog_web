@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->datetime('published_at')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

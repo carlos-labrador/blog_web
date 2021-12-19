@@ -39,7 +39,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
         Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
+        
         Route::resource('posts', PostController::class);
+        Route::get('post/{slug}','PostController@slug')->name('posts.slug');
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

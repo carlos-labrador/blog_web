@@ -8,12 +8,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav me-auto">
+        @can(['create'], \App\Models\Post::class)
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{route('posts.index')}}">Post</a>
         </li>
+        @endcan
+
+        @role(['admin'])
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Blogs</a>
+          <a class="nav-link active" aria-current="page" href="{{route('users.index')}}">Users</a>
         </li>
+        @endrole
         {{-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li> --}}
@@ -34,10 +39,18 @@
 
       </ul>
 
-      <form class="d-flex">
+
+      <div class="d-flex">
+        <a
+          class="flex order-first lg:order-none lg:w-1/5 title-font font-bold items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+          BLOG
+        </a>
+      </div>
+
+      {{-- <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> --}}
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ms-auto">
