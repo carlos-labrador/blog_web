@@ -24,6 +24,15 @@ class Post extends Model
     ];
 
     /**
+     * Typecasting is awesome.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'published_at' => 'datetime:Y-m-d',
+    ];
+
+    /**
      * Always generate the blog url when it is updated.
      *
      * @param $value
@@ -32,5 +41,13 @@ class Post extends Model
     public function setPasswordAttribute($value)
     {
         $this->attributes['slug'] = Str::slug($this->attributes['title']);
+    }
+
+    /**
+     * Get the owner of the post.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

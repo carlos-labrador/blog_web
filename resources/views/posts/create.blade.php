@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -11,9 +12,9 @@
                         Create Post
                     </h1>
                 </div>
-
                 <div class="card-body">
                     @include('layouts.shared.messages')
+                    <br>    
                     <p class="text-lg mt-2 text-gray-600">Start crafting your new post below.</p>
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">

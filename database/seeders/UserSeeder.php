@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             [
                 'username' => 'admin',
                 'email' => 'admin@blog.com',
-                'password' => bcrypt('supersecret'),
+                'password' => 'supersecret',
             ]
         );
         $admin->save();

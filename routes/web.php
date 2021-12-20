@@ -21,7 +21,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('/', 'BlogController@index')->name('blog.index');
 
     Route::group(['middleware' => ['guest']], function () {
         /**
@@ -38,10 +38,14 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     });
 
     Route::group(['middleware' => ['auth']], function () {
+
+        Route::get('/home', 'HomeController@index')->name('home.index');
+
+
         Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
-        
+
         Route::resource('posts', PostController::class);
-        Route::get('post/{slug}','PostController@slug')->name('posts.slug');
+        Route::get('post/{slug}', 'PostController@slug')->name('posts.slug');
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

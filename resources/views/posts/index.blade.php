@@ -20,7 +20,6 @@
                 </div>
                 <div class="card-body">
                     @include('layouts.shared.messages')
-
                     <br>
                     <table class="table table-bordered">
                         <thead>

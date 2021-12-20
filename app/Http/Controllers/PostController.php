@@ -55,14 +55,12 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         try {
-            $user = $request->user();
-            $data = $request->only(['title', 'body']);
-            $data['slug'] =  Str::slug($request->input('title'));
-            $user->posts()->create($data);
+            $user = $request->user();            
+            $user->posts()->create($request->data());
             return redirect()->route('posts.index')->with('success', 'Post created successfully!');
         } catch (\Exception $error) {
             report($error);
-            return back()->withError($error->getMessage())->withInput();
+            return back()->withErrors($error->getMessage())->withInput();
         }
     }
 
@@ -97,11 +95,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-
-
         $post->update($request->validate([
             'title' => 'required',
             'body' => 'required',
+            'published_at' => 'required|date'
         ]));
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');

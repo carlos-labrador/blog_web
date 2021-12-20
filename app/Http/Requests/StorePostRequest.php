@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StorePostRequest extends FormRequest
 {
@@ -26,6 +27,14 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|min:6',
             'body' => 'required|min:6',
+            'published_at' => 'required|date'
         ];
+    }
+
+    public function data()
+    {
+        $data = $this->only(['title', 'body','published_at']);
+        $data['slug'] =  Str::slug($this->input('title'));
+        return $data;
     }
 }
