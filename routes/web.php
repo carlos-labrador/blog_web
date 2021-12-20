@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
-     * Home Routes
+     * Guest Routes
      */
     Route::get('/', 'BlogController@index')->name('blog.index');
-
+    Route::get('post/{post:slug}', 'PostController@slug')->name('posts.slug');
     Route::group(['middleware' => ['guest']], function () {
         /**
          * Register Routes
@@ -37,6 +37,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/login', 'Auth\LoginController@login')->name('login.perform');
     });
 
+    /** 
+     * Private Routes 
+     */
     Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/home', 'HomeController@index')->name('home.index');
@@ -45,7 +48,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
 
         Route::resource('posts', PostController::class);
-        Route::get('post/{slug}', 'PostController@slug')->name('posts.slug');
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

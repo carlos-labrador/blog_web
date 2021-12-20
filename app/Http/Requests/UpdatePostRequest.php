@@ -3,10 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
-class StorePostRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +24,11 @@ class StorePostRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             'title' => 'required|min:6',
             'body' => 'required|min:6',
-            'published_at' => 'required|date|after_or_equal:' . now()->format('Y-m-d'),
-            'slug' => ['required', Rule::unique('posts', 'slug')],
+            'published_at' => 'required|date|after_or_equal:' . $this->published_at,
+            'slug' => ['required', Rule::unique('posts')->ignore($this->post->id)],
         ];
     }
 }

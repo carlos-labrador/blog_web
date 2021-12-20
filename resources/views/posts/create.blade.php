@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     @include('layouts.shared.messages')
-                    <br>    
+                    <br>
                     <p class="text-lg mt-2 text-gray-600">Start crafting your new post below.</p>
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -24,24 +24,10 @@
 
                     <form action="{{ route('posts.store')}}" method="post">
                         @csrf
-                        <div class="mb-3">
-                            <label for="title" class="block text-sm font-medium text-gray-700">Post Title</label>
-                            <input type="text" name="title" class="form-control">
-
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="body" class="fomr-label">Post Body</label>
-                            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
-                            <div class="form-text">Add the body for your post.</div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="">Publish At</label>
-                            <input type="date" name="published_at" class="form-control">
-                        </div>
-
+                        <x-forms.input name="title" required/>
+                        <x-forms.textarea name="body" required/>
+                        <x-forms.input name="slug" required/>
+                        <x-forms.input type="date" name="published_at" label="publish at" min="{{ date('mm/dd/yyyy') }}" required/>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 

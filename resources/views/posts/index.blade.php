@@ -28,7 +28,7 @@
                                 <th>Title</th>
                                 <th>Published At</th>
                                 <th>Created at</th>
-                                <th colspan="2">Action</th>
+                                <th colspan="2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,13 +39,9 @@
                                 <td>{{ date('Y-m-d', strtotime($post->published_at)) }}</td>
                                 <td>{{ date('Y-m-d', strtotime($post->created_at)) }}</td>
                                 <td>
-                                    <a href="posts/{{$post->id}}" class="btn btn-primary">Show</a>
-                                    <a href="posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
-                                    <form action="posts/{{$post->id}}" method="post" class="d-inline">
-                                        {{ csrf_field() }}
-                                        @method('DELETE')
-                                        <button class="btn btn-danger" type="submit">Delete</button>
-                                    </form>
+                                    <x-forms.view-button href="{{ route('posts.show', $post->id) }}" />
+                                    <x-forms.edit-button href="{{ route('posts.edit', $post->id) }}" />
+                                    <x-forms.delete-button action="{{route('posts.destroy',['post' => $post->id])}}" />
                                 </td>
                             </tr>
                             @endforeach

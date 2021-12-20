@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-center">
-                        <img class="img-fluid" src="{!! url('images/blog.svg') !!}" alt="" width="72" height="57">
+                        Login
                     </div>
                     {{-- {{ __('Login') }} --}}
                 </div>

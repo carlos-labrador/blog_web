@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,7 +33,6 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $posts = $user->posts;
-        logger('hola');
         return view('posts.index', compact('posts'))->with('success', 'Post created successfully!');;
     }
 
@@ -55,8 +55,9 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         try {
-            $user = $request->user();            
-            $user->posts()->create($request->data());
+            $user = $request->user();
+            $data = $request->all();
+            $user->posts()->create($data);
             return redirect()->route('posts.index')->with('success', 'Post created successfully!');
         } catch (\Exception $error) {
             report($error);
@@ -93,14 +94,9 @@ class PostController extends Controller
      * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update($request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'published_at' => 'required|date'
-        ]));
-
+        $post->update($request->all());
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
 
@@ -116,9 +112,8 @@ class PostController extends Controller
         return redirect()->back()->with('success', 'Post deleted successfully!');
     }
 
-    public function slug($slug)
+    public function slug(Post $post)
     {
-        $post = Post::where('slug', $slug)->first();
         return view('posts.show', compact('post'));
     }
 }

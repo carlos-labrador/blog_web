@@ -5,7 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit Post') }}</div>
+                <div class="card-header">
+                    <h1
+                        class="text-4xl mt-6 tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+                        Edit Post
+                    </h1>
+                </div>
 
                 <div class="card-body">
                     @include('layouts.shared.messages')
@@ -13,23 +18,12 @@
                     <form action="{{route('posts.update',$post->id)}}" method="post">
                         @csrf
                         @method('PUT')
-                        <div class="form-group">
-                            <label for="">Post Title</label>
-                            <input type="text" name="title" class="form-control" value="{{$post->title}}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Post Body</label>
-                            <textarea name="body" id="" cols="30" rows="10"
-                                class="form-control">{{$post->body}}</textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Publish At</label>
-                            <input type="date" name="published_at" class="form-control"
-                                value="{{ date('Y-m-d', strtotime($post->published_at)) }}">
-                        </div>
-
+                        <x-forms.input name="title" :value="old('title',$post->title)" required />
+                        <x-forms.textarea name="body" required>{{ old('body',$post->body) }}</x-forms.textarea>
+                        <x-forms.input name="slug" :value="old('slug',$post->slug)" required />
+                        <x-forms.input type="date" name="published_at" label="publish at"
+                            min="{{$post->published_at->format('Y-m-d')}}"
+                            :value="old('published_at',$post->published_at->format('Y-m-d'))" required />
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
 

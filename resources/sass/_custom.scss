@@ -2,6 +2,13 @@
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
+body {
+  background: white;
+  color: #222222;
+  margin: auto;
+  font-family: sans-serif;
+}
+
 main > .container {
     padding: 60px 15px 0;
   }
@@ -60,4 +67,9 @@ main > .container {
     color: $primary;
     background-color: #343a40;
     background-color: $gray-800;
+  }
+
+  img {
+    -webkit-filter: invert(1);
+    filter: invert(1);
   }

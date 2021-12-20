@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-md navbar navbar-dark bg-dark shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="{{ url('/') }}"> {{ config('app.name', 'Laravel') }}</a>
+    <a class="navbar-brand" href="{{ url('/') }}">
+      <img class="img-fluid" src="{!! url('images/blog.svg') !!}" alt="" width="72" height="57">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,12 +47,6 @@
       </ul>
 
 
-      <div class="d-flex">
-        <a
-          class="flex order-first lg:order-none lg:w-1/5 title-font font-bold items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
-          BLOG
-        </a>
-      </div>
 
       {{-- <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -17448,6 +17448,13 @@ textarea.form-control-lg {
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
+body {
+  background: white;
+  color: #222222;
+  margin: auto;
+  font-family: sans-serif;
+}
+
 main > .container {
   padding: 60px 15px 0;
 }
@@ -17505,4 +17512,8 @@ a.card-footer:active {
   color: #D4A637;
   background-color: #343a40;
   background-color: #343a40;
+}
+
+img {
+  filter: invert(1);
 }

@@ -28,7 +28,7 @@
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> --}}
 </head>
 
-<body>
+<body style="font-family: Open Sans, sans-serif">
   <div id="app">
     @include('layouts.shared.navbar5')
 
