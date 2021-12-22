@@ -17517,3 +17517,119 @@ a.card-footer:active {
 img {
   filter: invert(1);
 }
+
+.post-preview > a {
+  color: #212529;
+}
+.post-preview > a:focus, .post-preview > a:hover {
+  text-decoration: none;
+  color: #D4A637;
+}
+.post-preview > a > .post-title {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.post-preview > a > .post-subtitle {
+  font-weight: 300;
+  margin: 0 0 10px;
+}
+.post-preview > .post-meta {
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 0;
+  color: #6c757d;
+}
+.post-preview > .post-meta > a {
+  text-decoration: none;
+  color: #212529;
+}
+.post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+  text-decoration: underline;
+  color: #D4A637;
+}
+@media only screen and (min-width: 768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+header.masthead {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem + 57px);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: #4f606e;
+  background-size: cover;
+  background-attachment: scroll;
+}
+header.masthead:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+header.masthead .page-heading,
+header.masthead .post-heading,
+header.masthead .site-heading {
+  color: #fff;
+}
+header.masthead .page-heading,
+header.masthead .site-heading {
+  text-align: center;
+}
+header.masthead .page-heading h1, header.masthead .page-heading .h1,
+header.masthead .site-heading h1,
+header.masthead .site-heading .h1 {
+  font-size: 3rem;
+}
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  display: block;
+  margin-top: 0.625rem;
+}
+header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+  font-size: 2.25rem;
+}
+header.masthead .post-heading .meta,
+header.masthead .post-heading .subheading {
+  line-height: 1.1;
+  display: block;
+}
+header.masthead .post-heading .subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.75rem 0 2rem;
+}
+header.masthead .post-heading .meta {
+  font-size: 1.25rem;
+  font-weight: 300;
+  font-style: italic;
+  font-family: var(--bs-font-sans-serif);
+}
+header.masthead .post-heading .meta a {
+  color: #fff;
+}
+@media (min-width: 992px) {
+  header.masthead {
+    padding-top: 12.5rem;
+    padding-bottom: 12.5rem;
+  }
+  header.masthead .page-heading h1, header.masthead .page-heading .h1,
+header.masthead .site-heading h1,
+header.masthead .site-heading .h1 {
+    font-size: 5rem;
+  }
+  header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+    font-size: 3.5rem;
+  }
+  header.masthead .post-heading .subheading {
+    font-size: 1.875rem;
+  }
+}
