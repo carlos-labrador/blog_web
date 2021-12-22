@@ -47,7 +47,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
         Route::post('/logout', 'Auth\LogoutController@destroySession')->name('logout');
 
+        Route::post('post/{post}/comment','CommentController@store')->name('comment.store');
         Route::resource('posts', PostController::class);
+
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

@@ -50,4 +50,26 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Scope a query to only include users of a given type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  mixed  $type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when(
+            $filters['search'] ?? false,
+            fn ($query, $search) =>
+            $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%')
+        );
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

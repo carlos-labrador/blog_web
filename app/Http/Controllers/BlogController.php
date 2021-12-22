@@ -10,10 +10,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        DB::listen(function ($query) {
-            logger($query->sql, $query->bindings);
-        });
-        $blog = Post::with(['user'])->latest()->paginate(5);
+        $blog = Post::with(['user'])->latest()->filter(request(['search']))->paginate(5);
         return view('blogs.index', compact('blog'));
     }
 }

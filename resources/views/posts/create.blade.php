@@ -24,11 +24,14 @@
 
                     <form action="{{ route('posts.store')}}" method="post">
                         @csrf
-                        <x-forms.input name="title" required/>
-                        <x-forms.textarea name="body" required/>
-                        <x-forms.input name="slug" required/>
-                        <x-forms.input type="date" name="published_at" label="publish at" min="{{ date('mm/dd/yyyy') }}" required/>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <x-forms.input name="title" required />
+                        <x-forms.textarea name="body" required />
+                        <x-forms.input name="slug" required />
+                        <x-forms.input type="date" name="published_at" label="publish at" min="{{ date('mm/dd/yyyy') }}"
+                            required />
+                        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                        <x-forms.submit-button>Save</x-form.button>
+
                     </form>
 
                 </div>
